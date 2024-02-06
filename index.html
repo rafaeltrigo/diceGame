@@ -1,3 +1,4 @@
+<!-- Created by Rafael Trigo  -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -10,68 +11,75 @@
 </head>
 
 <hr>
+<!-- Starts Here -->
+<div class="container">
 
-  <div class="container">
+  <h1>Play the Game</h1>
+  <button class="btn" onclick="getRandom()">Play</button>
 
-    <h1>Play the Game</h1>
-    <button class="btn" onclick="getRandom()">Play</button>
-
-    <div class="dice">
-      <p id="p1">Player 1</p>
-      <img class="img1" id="img1" src="">
-    </div>
-
-    <div class="dice">
-      <p id="p2">Player 2</p>
-      <img class="img2" id="img2" src="">
-    </div>
-
+  <div class="dice">
+    <p id="p1">Player 1</p>
+    <img class="img1" id="img1" src="">
   </div>
-  <hr>
-  <footer>
-    🎲 RafaelTrigo 🎲
-  </footer>
-  <script>
-    let p1Points = 0
-    let p2Points = 0
-    function getRandom() {
-      let random1 = Math.floor((Math.random() * 6) + 1)
-      let random2 = Math.floor((Math.random() * 6) + 1)
-      console.log(random1, random2)
-      let player1 = document.getElementById("img1")
-      let player2 = document.getElementById("img2")
-      let player1p = document.getElementById("p1")
-      let player2p = document.getElementById("p2")
 
-      let image1 = `./images/dice${random1}.png`
-      let image2 = `./images/dice${random2}.png`
-      let src = 'src'
+  <div class="dice">
+    <p id="p2">Player 2</p>
+    <img class="img2" id="img2" src="">
+  </div>
 
-      player1.setAttribute(`${src}`, `${image1}`)
-      player2.setAttribute(`${src}`, `${image2}`)
-      if (random1 === random2) {
+</div><!-- Final Container -->
+
+<hr>
+<footer>
+  🎲 RafaelTrigo 🎲
+</footer>
+<script>
+  // Created by Rafael Trigo
+  // Get Dom elements
+  const player1 = document.getElementById("img1")
+  const player2 = document.getElementById("img2")
+  const player1p = document.getElementById("p1")
+  const player2p = document.getElementById("p2")
+  // Variables
+  let p1Points = 0
+  let p2Points = 0
+  // Function
+  function getRandom() {
+    // Get random Numbers for each Player
+    let random1 = Math.floor((Math.random() * 6) + 1)
+    let random2 = Math.floor((Math.random() * 6) + 1)
+    console.log(random1, random2)
+    // set imagem link to a relative path
+    let image1 = `./images/dice${random1}.png`
+    let image2 = `./images/dice${random2}.png`
+    let src = 'src'
+    // Set the image to element
+    player1.setAttribute(`${src}`, `${image1}`)
+    player2.setAttribute(`${src}`, `${image2}`)
+    // Star Logic
+    if (random1 === random2) {
+      p1Points++
+      player1p.textContent = "Player 1 Empatou /" + " Points : " + p1Points;
+      p2Points++
+      player2p.textContent = "Player 2 Empatou /" + " Points : " + p2Points;
+    } else
+      if (random1 > random2) {
         p1Points++
-        player1p.textContent = "Player 1 Empatou /" + " Points : " + p1Points;
+        player1p.textContent = "Player 1 Eu Ganhei /" + " Points : " + p1Points
+        player2p.textContent = "Player 2 Eu Perdi /" + " Points : " + p2Points;
+      } else {
+        player1p.textContent = "Player 1 Eu Perdi /" + " Points : " + p1Points
         p2Points++
-        player2p.textContent = "Player 2 Empatou /" + " Points : " + p2Points;
-      } else
-        if (random1 > random2) {
-          p1Points++
-          player1p.textContent = "Player 1 Eu Ganhei /" + " Points : " + p1Points
-          player2p.textContent = "Player 2 Eu Perdi /" + " Points : " + p2Points;
-        } else {
-          player1p.textContent = "Player 1 Eu Perdi /" + " Points : " + p1Points
-          p2Points++
-          player2p.textContent = "Player 2 Eu Ganhei /" + " Points : " + p2Points;
-        }
-      console.log(p1Points, p2Points)
-    }
-    //setInterval(getRandom, 3000)
-    //getRandom()
+        player2p.textContent = "Player 2 Eu Ganhei /" + " Points : " + p2Points;
+      }
+    console.log(p1Points, p2Points)
+  }
+  //setInterval(getRandom, 3000)
+  //getRandom()
 
 
 
-  </script>
+</script>
 </body>
 
 
